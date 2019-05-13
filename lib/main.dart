@@ -4,8 +4,7 @@ import 'data/Photo.dart';
 import 'network/UnsplashApi.dart' as api;
 
 void main() async{
-  var _data = await api.UnsplashApi().fetchPhotos("water");
-  List<Photo> _photos = new List<Photo>.from(_data);
+  List<Photo> _photos = await api.UnsplashApi().fetchPhotos("water");
   _photos.forEach((element) => debugPrint(element.description));
   runApp(MyApp());
 }

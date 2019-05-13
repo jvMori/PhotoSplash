@@ -10,8 +10,9 @@ class Photo {
     return Photo(
         likes: json["likes"],
         description: json["description"],
-        user: json["user"],
-        urls: json["urls"]);
+        user: User.fromJson(json["user"]),
+        urls: Urls.fromJson(json["urls"])
+    );
   }
 }
 
@@ -35,7 +36,8 @@ class User {
         username: json["username"],
         name: json["name"],
         portfolioUrl: json["portfolio_url"],
-        profileImage: json["profile_image"]);
+        profileImage: ProfileImage.fromJson(json["profile_image"])
+    );
   }
 }
 
