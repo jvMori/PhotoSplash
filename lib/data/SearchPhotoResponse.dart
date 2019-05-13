@@ -9,7 +9,7 @@ class SearchPhotoResponse{
   factory SearchPhotoResponse.fromJson(Map<String, dynamic> json){
     return SearchPhotoResponse(
       totalPages: json["total_pages"],
-      results: json["results"]
+      results:  json["results"]
     );
   }
 }

@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'data/Photo.dart';
+import 'network/UnsplashApi.dart' as api;
+
+void main() async{
+  var _data = await api.UnsplashApi().fetchPhotos("water");
+  List<Photo> _photos = new List<Photo>.from(_data);
+  _photos.forEach((element) => debugPrint(element.description));
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
