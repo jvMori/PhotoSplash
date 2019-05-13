@@ -10,7 +10,8 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final Future<Photo> photos;
+  MyApp({Key key, this.photos }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,57 +19,49 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page', photos: this.photos),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
+  MyHomePage({Key key, this.title, this.photos}) : super(key: key);
   final String title;
+  final Future<Photo> photos;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: getListView(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: makePhoto(widget.photos)
     );
   }
-  List<String> getListElements() => List<String>.generate(5, (counter) => "Item");
-  
-   Widget getListView(){
-    var listView = ListView.builder(itemBuilder: (context, index){
-      return ListTile(
-        leading: Icon(Icons.library_music),
-        title: Text("Rhye"),
-        subtitle: Text("Malibu Nights"),
-        trailing: Icon(Icons.more_horiz),
-        onTap: () {
+  FutureBuilder<Photo> makePhoto(Future<Photo> photos){
+    return FutureBuilder<Photo>(
+      future: photos,
+      builder: (context, snapshot){
+        if(snapshot.hasData){
+          return ListTile(
+            leading: Icon(Icons.library_music),
+            title: Text(snapshot.data.user.name),
+            subtitle: Text(snapshot.data.description),
+            trailing: Icon(Icons.more_horiz),
+            onTap: () {
 
-        },
-      );
-    });
-    return listView;
-   }
+            },
+          );
+        }else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return CircularProgressIndicator();
+      },
+    );
+  }
 }
