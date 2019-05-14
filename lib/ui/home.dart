@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/data/Photo.dart';
 import 'package:flutter_app/network/UnsplashApi.dart' as api;
 
+import 'PhotoItem.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -31,13 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: Icon(Icons.library_music),
-                title: Text(snapshot.data[index].user.name),
-                subtitle: Text(snapshot.data[index].description != null ? snapshot.data[index].description : ""),
-                trailing: Icon(Icons.more_horiz),
-                onTap: () {},
-              );
+              return PhotoItem(snapshot.data[index]);
             },
           );
         } else if (snapshot.hasError) {
