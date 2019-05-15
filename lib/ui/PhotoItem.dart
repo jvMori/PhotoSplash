@@ -12,11 +12,13 @@ class PhotoItem extends StatelessWidget {
     return new Card(
       child: new Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: Colors.black12),
-          height: 350,
+              borderRadius: BorderRadius.circular(5), color: Colors.black12
+          ),
+          //height: 350,
           margin: EdgeInsets.only(left: 0.0, right: 0.0),
           padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
           child: new Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
@@ -55,13 +57,15 @@ class PhotoItem extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: _data.urls.small,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: _data.urls.small,
+                    fit: BoxFit.cover,
+                  ),
+                ],
               )
             ],
           )),
