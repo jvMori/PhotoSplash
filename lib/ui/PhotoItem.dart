@@ -12,7 +12,7 @@ class PhotoItem extends StatelessWidget {
     return new Card(
       child: new Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: Colors.black12
+              borderRadius: BorderRadius.circular(5), color: Colors.white30
           ),
           //height: 350,
           margin: EdgeInsets.only(left: 0.0, right: 0.0),
@@ -31,18 +31,22 @@ class PhotoItem extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(_data.user.profileImage.medium),
-                            radius: 18,
+                          Material(
+                            elevation: 3.0,
+                            borderRadius: BorderRadius.circular(18),
+                            child: CircleAvatar(
+                              backgroundImage:
+                              NetworkImage(_data.user.profileImage.medium),
+                              radius: 18,
+                            ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 8.0),
+                            margin: EdgeInsets.only(left: 16.0),
                             child: Text(
                               _data.user.name,
                               style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
+                                  color: Colors.black87,
+                                  fontSize: 19,
                                   letterSpacing: 1),
                             ),
                           )
@@ -51,7 +55,7 @@ class PhotoItem extends StatelessWidget {
                     ),
                     Icon(
                       Icons.more_horiz,
-                      color: Colors.black45,
+                      color: Colors.black87,
                       size: 40,
                     ),
                   ],
@@ -60,11 +64,15 @@ class PhotoItem extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: _data.urls.small,
-                    fit: BoxFit.cover,
-                  ),
+                  Material(
+                    borderRadius: BorderRadius.circular(5),
+                    elevation: 3,
+                    child: FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: _data.urls.small,
+                      fit: BoxFit.cover,
+                    ),
+                  )
                 ],
               )
             ],
