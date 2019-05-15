@@ -22,18 +22,26 @@ class PhotoItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Icon(
-                        Icons.more_horiz,
-                        color: Colors.black45,
-                        size: 40,
-                      ),
-                      Text("Jv Mori",
-                        style: TextStyle(color: Colors.black),
-                      )
-                    ],
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              _data.user.profileImage.medium
+                          ),
+                          radius: 16,
+                        ),
+                        Text(_data.user.name,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              letterSpacing: 1
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   Icon(
                     Icons.more_horiz,
