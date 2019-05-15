@@ -28,16 +28,19 @@ class PhotoItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              _data.user.profileImage.medium
-                          ),
-                          radius: 16,
-                        ),
-                        Text(_data.user.name,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              letterSpacing: 1
+                           backgroundImage: NetworkImage(
+                               _data.user.profileImage.medium
+                           ),
+                           radius: 18,
+                         ),
+                        Container(
+                          margin: EdgeInsets.only(left: 8.0),
+                          child: Text(_data.user.name,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                letterSpacing: 1
+                            ),
                           ),
                         )
                       ],
