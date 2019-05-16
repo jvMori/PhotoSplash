@@ -33,7 +33,7 @@ class PhotoItem extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          CircularAvatar(_data),
+                          CircularAvatar(_data, 18, 3.0),
                           Container(
                             margin: EdgeInsets.only(left: 16.0),
                             child: Text(
@@ -58,7 +58,7 @@ class PhotoItem extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Picture(_data, 5.0)
+                  Picture(_data, 5.0, 3.0)
                 ],
               )
             ],

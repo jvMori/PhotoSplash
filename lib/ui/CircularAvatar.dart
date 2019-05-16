@@ -3,16 +3,18 @@ import 'package:flutter_app/data/Photo.dart';
 
 class CircularAvatar extends StatelessWidget{
   final Photo _data;
-  CircularAvatar(this._data);
+  final num radiusSize;
+  final num elevation;
+  CircularAvatar(this._data, this.radiusSize, this.elevation);
   @override
   Widget build(BuildContext context) {
    return  Material(
-     elevation: 3.0,
-     borderRadius: BorderRadius.circular(18),
+     elevation: elevation,
+     borderRadius: BorderRadius.circular(radiusSize),
      child: CircleAvatar(
        backgroundImage:
        NetworkImage(_data.user.profileImage.medium),
-       radius: 18,
+       radius: radiusSize,
      ),
    );
   }
