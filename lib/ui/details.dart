@@ -44,7 +44,7 @@ class Details extends StatelessWidget {
             DetailsItem(_data.user.name, Icons.calendar_today),
             DetailsItem(_data.likes.toString() + " Likes", Icons.headset),
             DetailsItem(_data.likes.toString() + " Downloads", Icons.file_download),
-            DetailsItem(_data.user.name, Icons.color_lens)
+            DetailsItem(_data.color, Icons.color_lens)
           ],
         )
         ),

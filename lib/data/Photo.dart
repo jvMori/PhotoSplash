@@ -3,15 +3,17 @@ class Photo {
   String description;
   User user;
   Urls urls;
+  String color;
 
-  Photo({this.likes, this.description, this.user, this.urls});
+  Photo({this.likes, this.description, this.user, this.urls, this.color});
 
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(
         likes: json["likes"],
         description: json["description"],
         user: User.fromJson(json["user"]),
-        urls: Urls.fromJson(json["urls"])
+        urls: Urls.fromJson(json["urls"]),
+        color: json["color"]
     );
   }
 }
