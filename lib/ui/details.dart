@@ -10,26 +10,55 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-            child: Container(
-              height: 300,
-              child: Picture(_data, 0.0, 0.0),
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Image.network(
+                  _data.urls.regular,
+                  fit: BoxFit.fill,
+                )
+              ],
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white30
+              ),
+              padding: EdgeInsets.all(16.0),
+              child: Row(
+                children: <Widget>[
+                  CircularAvatar(_data, 20.0, 0.0)
+                ],
+              ),
             )
-        ),
-        Container(
-          padding: EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            color: Colors.white30,
-          ),
-          child: Row(
-            children: <Widget>[
-              CircularAvatar(_data, 15.0, 0.0)
-            ],
-          ),
+          ],
         )
-      ],
-    );
+        ),
+      );
   }
 }
+
+//Column(
+//children: <Widget>[
+//Expanded(
+//child: Container(
+//height: 300,
+//child: Picture(_data, 0.0, 0.0),
+//)
+//),
+//Container(
+//padding: EdgeInsets.all(8.0),
+//decoration: BoxDecoration(
+//color: Colors.white30,
+//),
+//child: Row(
+//children: <Widget>[
+//CircularAvatar(_data, 15.0, 0.0)
+//],
+//),
+//)
+//],
+//);

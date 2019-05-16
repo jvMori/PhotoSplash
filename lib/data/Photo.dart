@@ -56,13 +56,15 @@ class ProfileImage {
 class Urls {
   String small;
   String full;
+  String regular;
 
-  Urls({this.small, this.full});
+  Urls({this.small, this.full, this.regular});
 
   factory Urls.fromJson(Map<String, dynamic> json) {
     return Urls(
       small: json["small"],
       full: json["full"],
+      regular: json["regular"]
     );
   }
 }
