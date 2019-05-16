@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/Photo.dart';
+import 'package:flutter_app/ui/CircularAvatar.dart';
+import 'package:flutter_app/ui/picture.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class PhotoItem extends StatelessWidget {
@@ -12,9 +16,7 @@ class PhotoItem extends StatelessWidget {
     return new Card(
       child: new Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: Colors.white30
-          ),
-          //height: 350,
+              borderRadius: BorderRadius.circular(5), color: Colors.white30),
           margin: EdgeInsets.only(left: 0.0, right: 0.0),
           padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
           child: new Column(
@@ -31,15 +33,7 @@ class PhotoItem extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Material(
-                            elevation: 3.0,
-                            borderRadius: BorderRadius.circular(18),
-                            child: CircleAvatar(
-                              backgroundImage:
-                              NetworkImage(_data.user.profileImage.medium),
-                              radius: 18,
-                            ),
-                          ),
+                          CircularAvatar(_data),
                           Container(
                             margin: EdgeInsets.only(left: 16.0),
                             child: Text(
@@ -64,15 +58,7 @@ class PhotoItem extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Material(
-                    borderRadius: BorderRadius.circular(5),
-                    elevation: 3,
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: _data.urls.small,
-                      fit: BoxFit.cover,
-                    ),
-                  )
+                  Picture(_data, 5.0)
                 ],
               )
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/Photo.dart';
 import 'package:flutter_app/network/UnsplashApi.dart' as api;
+import 'package:flutter_app/ui/details.dart';
 
 import 'PhotoItem.dart';
 
@@ -30,12 +31,13 @@ class _MyHomePageState extends State<MyHomePage> {
       future: photos,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return PhotoItem(snapshot.data[index]);
-            },
-          );
+//          return ListView.builder(
+//            itemCount: snapshot.data.length,
+//            itemBuilder: (context, index) {
+//              return PhotoItem(snapshot.data[index]);
+//            },
+//          );
+        return Details(snapshot.data[0]);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
